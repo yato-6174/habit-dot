@@ -1,0 +1,14 @@
+# 依存関係とビルド成果物
+node_modules/
+.next/
+out/
+
+# 環境設定・ローカルデータ
+.env
+.env.local
+*.local
+
+# OS・エディタの一時ファイル
+.DS_Store
+Thumbs.db
+*.log
