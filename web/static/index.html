@@ -6,35 +6,66 @@
   <meta name="theme-color" content="#ffffff">
   <title>習慣ドット</title>
   <style>
-    :root{--ink:#111;--muted:#757575;--line:#dedede;--paper:#fff}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",sans-serif}
-    main{max-width:700px;margin:auto;padding:28px 22px 72px}header{border-top:2px solid var(--ink);padding:18px 0 34px}.eyebrow{margin:0 0 28px;font-size:11px;font-weight:700;letter-spacing:.16em}
-    h1,h2,p{margin:0}h1{font-family:Georgia,"Yu Mincho",serif;font-size:clamp(38px,9vw,64px);font-weight:400;letter-spacing:-.045em;line-height:1.05}h2{font-size:17px;letter-spacing:-.02em}.date,.hint{color:var(--muted);font-size:13px;line-height:1.6}.date{display:block;margin-top:18px}
-    #list{border-top:1px solid var(--ink)}.habit{padding:23px 0 22px;border-bottom:1px solid var(--line)}.top,footer,.add-row,.data-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}.count{font-size:11px;font-weight:700;letter-spacing:.08em}.title{margin-top:6px;font-size:22px}.x{width:34px;height:34px;border:0;background:none;color:var(--muted);font-size:24px;line-height:1}.x:hover{color:var(--ink)}
-    .dots{display:flex;flex-wrap:wrap;gap:7px;margin:25px 0}.dot{width:11px;height:11px;border:1px solid #bdbdbd;border-radius:50%}.dot.on{background:var(--ink);border-color:var(--ink)}
-    .hold{--p:0deg;position:relative;min-width:148px;padding:3px;border:0;border-radius:999px;background:conic-gradient(var(--ink) var(--p),#e5e5e5 0);overflow:hidden}.hold-inner{display:block;border-radius:999px;padding:10px 14px;background:var(--paper);color:var(--ink);font-size:13px;font-weight:700}.hold small{display:block;margin-top:2px;color:var(--muted);font-size:10px;font-weight:400}.hold.done{background:var(--ink)}.hold.done .hold-inner{background:var(--ink);color:#fff}.hold.done small{display:none}
-    .empty{padding:52px 0;border-bottom:1px solid var(--line);text-align:left}.empty h2{font-family:Georgia,"Yu Mincho",serif;font-size:28px;font-weight:400}.empty .hint{display:block;margin-top:9px}
-    .section{padding:28px 0;border-bottom:1px solid var(--line)}.section-head{margin-bottom:16px}.add-row input{flex:1;min-width:0;border:1px solid var(--ink);border-radius:0;padding:12px 13px;background:#fff;color:var(--ink);font:inherit;font-size:16px}.add-row button,.backup{border:1px solid var(--ink);border-radius:0;padding:12px 15px;background:var(--ink);color:#fff;font:inherit;font-size:13px;font-weight:700;white-space:nowrap}.backup{background:#fff;color:var(--ink)}.restore{margin-left:10px;border:0;padding:0;background:none;color:var(--muted);font:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px}.data-actions{align-items:flex-end}.data-actions>div{display:flex;align-items:center;flex-wrap:wrap;gap:0}.footer-note{padding-top:18px;color:var(--muted);font-size:11px;line-height:1.6}#msg{min-height:20px;margin-top:16px;font-size:13px;text-align:center}
-    button{font:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media(max-width:480px){main{padding:18px 16px 54px}header{padding-bottom:27px}.habit{padding:20px 0}.title{font-size:20px}.dots{gap:6px;margin:21px 0}.dot{width:10px;height:10px}.hold{min-width:135px}.hold-inner{padding:9px 11px}.data-actions{display:block}.data-actions>div{margin-top:14px}}
+    :root{--ink:#161616;--muted:#767676;--line:#dedede;--paper:#fff;--subtle:#f6f6f6}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic",system-ui,sans-serif;font-feature-settings:"palt";-webkit-font-smoothing:antialiased}
+    main{max-width:760px;margin:auto;padding:28px 24px 80px}header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-top:2px solid var(--ink);padding:17px 0 35px}.eyebrow{margin:0 0 24px;font-size:10px;font-weight:700;letter-spacing:.15em}.date{margin:0 0 5px;color:var(--muted);font-size:12px;white-space:nowrap}
+    h1,h2,p{margin:0}h1{font-size:clamp(36px,7vw,58px);font-weight:700;letter-spacing:-.07em;line-height:1.06}h2{font-size:16px;font-weight:700;letter-spacing:-.025em}.hint{color:var(--muted);font-size:12px;line-height:1.65}
+    #habit-dot-list{border-top:1px solid var(--ink)}.habit{padding:24px 0 23px;border-bottom:1px solid var(--line)}.top,footer,.add-row,.data-actions{display:flex;align-items:center;justify-content:space-between;gap:13px}.count{font-size:10px;font-weight:700;letter-spacing:.09em}.title{margin-top:7px;font-size:22px;font-weight:650;letter-spacing:-.035em}.x{width:36px;height:36px;border:0;background:none;color:#999;font-size:24px;line-height:1}.x:hover{color:var(--ink)}
+    .dots{display:flex;flex-wrap:wrap;gap:7px;margin:25px 0}.dot{width:11px;height:11px;border:1px solid #bcbcbc;border-radius:50%}.dot.on{background:var(--ink);border-color:var(--ink)}
+    .hold{--p:0deg;position:relative;min-width:151px;padding:3px;border:0;border-radius:999px;background:conic-gradient(var(--ink) var(--p),#e4e4e4 0);overflow:hidden;touch-action:none}.hold-inner{display:block;border-radius:999px;padding:10px 14px;background:var(--paper);color:var(--ink);font-size:13px;font-weight:700}.hold small{display:block;margin-top:2px;color:var(--muted);font-size:10px;font-weight:500}.hold.done{background:var(--ink)}.hold.done .hold-inner{background:var(--ink);color:#fff}.hold.done small{display:none}
+    .empty{padding:50px 0;border-bottom:1px solid var(--line)}.empty h2{font-size:24px;letter-spacing:-.045em}.empty .hint{display:block;margin-top:10px}
+    .section{padding:29px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}.section-head .hint{font-size:11px}.add-row{align-items:stretch}.add-row input{flex:1;min-width:0;border:1px solid var(--line);border-radius:8px;padding:13px 14px;background:#fff;color:var(--ink);font:inherit;font-size:16px;transition:border-color .15s}.add-row input:focus{border-color:var(--ink)}.primary{border:1px solid var(--ink);border-radius:8px;padding:0 18px;background:var(--ink);color:#fff;font:inherit;font-size:13px;font-weight:700;white-space:nowrap}
+    .data-actions{align-items:flex-end}.data-copy{max-width:340px}.data-copy .hint{margin-top:5px}.backup{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff;color:var(--ink);font:inherit;font-size:12px;font-weight:650}.restore{margin-left:8px;border:0;padding:9px 2px;background:none;color:var(--muted);font:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px}.footer-note{padding-top:18px;color:var(--muted);font-size:11px;line-height:1.6}#habit-dot-message{min-height:20px;margin-top:15px;color:var(--muted);font-size:13px;text-align:center}
+    button{font:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:3px}@media(max-width:560px){main{padding:19px 16px 58px}header{display:block;padding-bottom:28px}.date{margin-top:18px}.habit{padding:21px 0}.title{font-size:20px}.dots{gap:6px;margin:21px 0}.dot{width:10px;height:10px}.hold{min-width:138px}.hold-inner{padding:9px 11px}.data-actions{display:block}.data-actions>div:last-child{margin-top:16px}}
   </style>
 </head>
 <body>
   <main>
-    <header><p class="eyebrow">HABIT DOT / DAILY RECORD</p><h1>今日の小さな<br>できたを残そう。</h1><span class="date" id="date"></span></header>
-    <section id="list" aria-live="polite"></section>
-    <section class="section"><div class="section-head"><h2>習慣を追加</h2></div><div class="add-row"><input id="name" aria-label="習慣の名前" placeholder="例：10分読書"><button id="add">追加</button></div></section>
-    <section class="section data-actions"><div><h2>データとバックアップ</h2><p class="hint">記録はこのブラウザ内に保存されます。</p></div><div><button class="backup" id="back">バックアップを作成</button><button class="restore" id="restore">復元</button><input id="file" type="file" accept="application/json" hidden></div></section>
-    <p class="footer-note">長押しで記録。ドットは続けた日を静かに残します。</p><p id="msg" aria-live="polite"></p>
+    <header><div><p class="eyebrow">HABIT DOT / DAILY RECORD</p><h1>今日の小さな<br>できたを残そう。</h1></div><p class="date" id="habit-dot-date"></p></header>
+    <section id="habit-dot-list" aria-live="polite"></section>
+    <section class="section">
+      <div class="section-head"><h2>習慣を追加</h2><span class="hint">いくつでも追加できます</span></div>
+      <form class="add-row" id="habit-dot-add-form" autocomplete="off"><input id="habit-dot-entry" name="habit_dot_entry" aria-label="習慣の名前" placeholder="例：10分読書" autocomplete="off" autocapitalize="none" spellcheck="false"><button class="primary" type="submit">追加</button></form>
+    </section>
+    <section class="section data-actions">
+      <div class="data-copy"><h2>データとバックアップ</h2><p class="hint">記録はこのブラウザ内に保存されます。</p></div>
+      <div><button class="backup" id="habit-dot-export" type="button">バックアップを作成</button><button class="restore" id="habit-dot-import-button" type="button">復元</button><input id="habit-dot-import-file" type="file" accept="application/json" hidden></div>
+    </section>
+    <p class="footer-note">長押しで記録。ドットは続けた日を静かに残します。</p><p id="habit-dot-message" aria-live="polite"></p>
   </main>
   <script>
-    const K='habit-dot-v1';let hs=JSON.parse(localStorage.getItem(K)||'[]');
-    const dateKey=d=>(d||new Date()).toLocaleDateString('en-CA'),today=dateKey(),save=()=>localStorage.setItem(K,JSON.stringify(hs));
+    const storageKey='habit-dot-v1';
+    const $=selector=>document.querySelector(selector);
+    const dom={date:$('#habit-dot-date'),list:$('#habit-dot-list'),form:$('#habit-dot-add-form'),entry:$('#habit-dot-entry'),export:$('#habit-dot-export'),importButton:$('#habit-dot-import-button'),importFile:$('#habit-dot-import-file'),message:$('#habit-dot-message')};
+    let habits=JSON.parse(localStorage.getItem(storageKey)||'[]');
+    const dateKey=d=>(d||new Date()).toLocaleDateString('en-CA');
+    const today=dateKey();
+    const save=()=>localStorage.setItem(storageKey,JSON.stringify(habits));
     const days=Array.from({length:new Date().getDate()},(_,i)=>{const d=new Date();d.setDate(i+1);return dateKey(d)});
-    date.textContent=new Intl.DateTimeFormat('ja-JP',{month:'long',day:'numeric',weekday:'short'}).format(new Date());
-    const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    function draw(){list.innerHTML=hs.length?'':'<div class="empty"><h2>最初のドットを育てよう</h2><span class="hint">下から続けたいことを追加してみてください。</span></div>';hs.forEach(h=>{const done=h.records.includes(today),monthly=h.records.filter(r=>r.slice(0,7)===today.slice(0,7)).length,e=document.createElement('article');e.className='habit';e.innerHTML='<div class="top"><div><span class="count">'+h.records.length+' 回達成</span><h2 class="title">'+esc(h.name)+'</h2></div><button class="x" aria-label="'+esc(h.name)+'を削除">×</button></div><div class="dots" aria-label="今月の記録">'+days.map(d=>'<i class="dot '+(h.records.includes(d)?'on':'')+'"></i>').join('')+'</div><footer><span class="hint">今月 '+monthly+' 回</span><button class="hold '+(done?'done':'')+'"><span class="hold-inner">'+(done?'達成しました':'今日できた')+(done?'':'<small>0.8秒 長押し</small>')+'</span></button></footer>';e.querySelector('.x').onclick=()=>{if(confirm('「'+h.name+'」を削除しますか？')){hs=hs.filter(x=>x.id!==h.id);save();draw()}};const b=e.querySelector('.hold');let frame,start;const stop=()=>{cancelAnimationFrame(frame);b.style.setProperty('--p','0deg')};b.onpointerdown=()=>{if(done)return;start=performance.now();const tick=now=>{const p=Math.min((now-start)/800,1);b.style.setProperty('--p',p*360+'deg');if(p===1){h.records.push(today);navigator.vibrate&&navigator.vibrate(35);save();draw()}else frame=requestAnimationFrame(tick)};frame=requestAnimationFrame(tick)};b.onpointerup=stop;b.onpointerleave=stop;b.onpointercancel=stop;b.onclick=()=>{if(done){h.records=h.records.filter(x=>x!==today);save();draw()}};list.append(e)})}
-    add.onclick=()=>{const value=name.value.trim();if(value){hs.push({id:crypto.randomUUID(),name:value,color:'#111',records:[]});name.value='';save();draw();msg.textContent='習慣を追加しました。'}};name.onkeydown=e=>e.key==='Enter'&&add.click();
-    back.onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({version:1,habits:hs})],{type:'application/json'}));a.download='habit-dot-'+today+'.json';a.click();msg.textContent='バックアップを作成しました。'};restore.onclick=()=>file.click();file.onchange=async()=>{try{const d=JSON.parse(await file.files[0].text());if(!Array.isArray(d.habits))throw 0;if(confirm('現在の記録を置き換えますか？')){hs=d.habits;save();draw();msg.textContent='復元しました。'}}catch{msg.textContent='読み込めないファイルです。'}};draw();
+    const escapeHtml=text=>text.replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const setMessage=text=>{dom.message.textContent=text};
+    dom.date.textContent=new Intl.DateTimeFormat('ja-JP',{month:'long',day:'numeric',weekday:'short'}).format(new Date());
+    function render(){
+      dom.list.innerHTML=habits.length?'':'<div class="empty"><h2>最初のドットを育てよう</h2><span class="hint">下から続けたいことを追加してみてください。</span></div>';
+      habits.forEach(habit=>{
+        const isDone=habit.records.includes(today);
+        const monthCount=habit.records.filter(record=>record.slice(0,7)===today.slice(0,7)).length;
+        const item=document.createElement('article');item.className='habit';
+        item.innerHTML='<div class="top"><div><span class="count">'+habit.records.length+' 回達成</span><h2 class="title">'+escapeHtml(habit.name)+'</h2></div><button class="x" aria-label="'+escapeHtml(habit.name)+'を削除" type="button">×</button></div><div class="dots" aria-label="今月の記録">'+days.map(day=>'<i class="dot '+(habit.records.includes(day)?'on':'')+'"></i>').join('')+'</div><footer><span class="hint">今月 '+monthCount+' 回</span><button class="hold '+(isDone?'done':'')+'" type="button"><span class="hold-inner">'+(isDone?'達成しました':'今日できた')+(isDone?'':'<small>0.8秒 長押し</small>')+'</span></button></footer>';
+        item.querySelector('.x').onclick=()=>{if(confirm('「'+habit.name+'」を削除しますか？')){habits=habits.filter(current=>current.id!==habit.id);save();render()}};
+        const hold=item.querySelector('.hold');let frame,startTime;
+        const cancelHold=()=>{cancelAnimationFrame(frame);hold.style.setProperty('--p','0deg')};
+        hold.onpointerdown=()=>{if(isDone)return;startTime=performance.now();const tick=now=>{const progress=Math.min((now-startTime)/800,1);hold.style.setProperty('--p',progress*360+'deg');if(progress===1){habit.records.push(today);navigator.vibrate&&navigator.vibrate(35);save();render()}else frame=requestAnimationFrame(tick)};frame=requestAnimationFrame(tick)};
+        hold.onpointerup=cancelHold;hold.onpointerleave=cancelHold;hold.onpointercancel=cancelHold;
+        hold.onclick=()=>{if(isDone){habit.records=habit.records.filter(record=>record!==today);save();render()}};
+        dom.list.append(item);
+      });
+    }
+    dom.form.onsubmit=event=>{event.preventDefault();const value=dom.entry.value.trim();if(!value)return;habits.push({id:crypto.randomUUID(),name:value,color:'#161616',records:[]});dom.entry.value='';save();render();setMessage('習慣を追加しました。')};
+    dom.export.onclick=()=>{const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([JSON.stringify({version:1,habits})],{type:'application/json'}));link.download='habit-dot-'+today+'.json';link.click();setMessage('バックアップを作成しました。')};
+    dom.importButton.onclick=()=>dom.importFile.click();
+    dom.importFile.onchange=async()=>{try{const data=JSON.parse(await dom.importFile.files[0].text());if(!Array.isArray(data.habits))throw new Error();if(confirm('現在の記録を置き換えますか？')){habits=data.habits;save();render();setMessage('復元しました。')}}catch{setMessage('読み込めないファイルです。')}finally{dom.importFile.value=''}};
+    render();
   </script>
 </body>
 </html>
